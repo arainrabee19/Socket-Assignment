@@ -33,11 +33,10 @@ def clientthread(conn):
 
     # infinite loop so that function do not terminate and thread do not end.
     while True:
+        data = conn.recv(1024)
         if conn==c[0]:
-            data = conn.recv(1024)
             c[1].send('Pehla:' + data)
         elif conn==c[1]:
-            data = conn.recv(1024)
             c[0].send('Dusra:' + data)
         else:
                 break
